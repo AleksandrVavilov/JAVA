@@ -1,0 +1,39 @@
+package org.geekbrains.sem2;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+/*Напишите метод, который составит строку, состоящую из 100
+повторений слова TEST и метод, который запишет эту строку в
+простой текстовый файл, обработайте исключения.*/
+public class Task5 {
+    private static final Logger logger = Logger.getLogger(Task5.class.getName());
+
+    public static void main(String[] args) {
+        String str = "TEST\n".repeat(100);
+        writeFile(str, "index.txt");
+    }
+
+    public static void writeFile(String args, String fileName) {
+        try (BufferedWriter bw = new BufferedWriter((new FileWriter(fileName)))) {
+            bw.write(args);
+            System.out.println("File writen to: " + fileName);
+            /*throw new IOException();*/ //Выброс ошибки для проверки
+        } catch (IOException e) {
+            FileHandler fh = null;
+            try {
+                fh = new FileHandler("errorlog", true);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            logger.addHandler(fh);
+            fh.setFormatter(new SimpleFormatter());
+            logger.log(Level.WARNING, "Ошибка записи");
+        }
+    }
+}
