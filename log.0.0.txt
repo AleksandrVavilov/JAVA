@@ -1,0 +1,16 @@
+сент. 27, 2024 12:08:18 AM org.geekbrains.JAVA.HW.HW2.Task4 findMinMax
+INFO: min =3
+сент. 27, 2024 12:08:19 AM org.geekbrains.JAVA.HW.HW2.Task4 findMinMax
+INFO: max =42
+сент. 27, 2024 12:08:53 AM org.geekbrains.JAVA.HW.HW2.Task4 findMinMax
+INFO: min = 3
+сент. 27, 2024 12:08:53 AM org.geekbrains.JAVA.HW.HW2.Task4 findMinMax
+INFO: max = 42
+сент. 27, 2024 12:11:31 AM org.geekbrains.JAVA.HW.HW2.FindMinMax findMinMax
+INFO: min = 3
+сент. 27, 2024 12:11:31 AM org.geekbrains.JAVA.HW.HW2.FindMinMax findMinMax
+INFO: max = 42
+сент. 27, 2024 12:12:58 AM org.geekbrains.JAVA.HW.HW2.FindMinMax findMinMax
+INFO: min = 3
+сент. 27, 2024 12:12:58 AM org.geekbrains.JAVA.HW.HW2.FindMinMax findMinMax
+INFO: max = 42
