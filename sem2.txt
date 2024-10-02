@@ -1,0 +1,10 @@
+.git
+.gitignore
+.idea
+errorlog
+index.txt
+log.txt
+output.txt
+pom.xml
+src
+target
