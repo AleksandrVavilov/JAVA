@@ -1,7 +1,5 @@
 package org.geekbrains.JAVA.HW.OOP.HW1;
 
-import java.util.Collection;
-import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
