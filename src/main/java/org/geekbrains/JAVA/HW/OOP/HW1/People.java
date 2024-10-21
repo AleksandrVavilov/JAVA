@@ -87,12 +87,12 @@ public class People {
         sb.append("name=" + name + ", ");
         sb.append("sex=" + sex + ", ");
         sb.append("age=" + age);
-        if (Father != null) sb.append(" ,Father=" + Father.getName());
-        if (Mother != null) sb.append(" ,Mother=" + Mother.getName());
-        if (Spouse != null) sb.append(" ,Spouse=" + Spouse.getName());
-        if (Sibling != null) sb.append(" ,Sibling=" + Sibling.getName());
+        if (Father != null) sb.append(", Father=" + Father.getName());
+        if (Mother != null) sb.append(", Mother=" + Mother.getName());
+        if (Spouse != null) sb.append(", Spouse=" + Spouse.getName());
+        if (Sibling != null) sb.append(", Sibling=" + Sibling.getName());
         if (!children.isEmpty()) {
-            sb.append(" ,children=");
+            sb.append(", children=");
             for (People child : children) {
                 sb.append("[" + child.getName() + "]");
             }
