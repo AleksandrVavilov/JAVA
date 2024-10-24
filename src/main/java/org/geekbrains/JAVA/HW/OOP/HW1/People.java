@@ -1,9 +1,11 @@
 package org.geekbrains.JAVA.HW.OOP.HW1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class People {
+public class People implements Serializable {
+    private static final long serialVersionUID = 1L; //нужно для работы сериализибера
     private String name;
     private String sex;
     private int age;

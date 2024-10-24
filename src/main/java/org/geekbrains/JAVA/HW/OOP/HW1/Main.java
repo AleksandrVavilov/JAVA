@@ -1,6 +1,8 @@
 package org.geekbrains.JAVA.HW.OOP.HW1;
 
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
         FamilyTree Vavilovi = new FamilyTree();
@@ -42,9 +44,24 @@ public class Main {
         Vavilovi.addPerson(VladimirBoy);
 
         Vavilovi.stabilization();
-        System.out.println(Aleksandr);
-        System.out.println(Vavilovi);
+//        System.out.println(Aleksandr);
+//        System.out.println(Vavilovi);
 //        System.out.println(Semen.getChildren());
-
+        FileOperation fileOps = new FileOperationImpl();
+        try {
+            fileOps.saveToFile(Vavilovi, "Vavilovi.dat");
+            System.out.println("Vavilovi tree saved to file.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FamilyTree loadFamilyTree = null;
+        try {
+            loadFamilyTree = fileOps.loadFromFile("Vavilovi.dat");
+            System.out.println("Vavilovi loaded from file.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (loadFamilyTree != null) System.out.println(loadFamilyTree);
     }
 }
+
