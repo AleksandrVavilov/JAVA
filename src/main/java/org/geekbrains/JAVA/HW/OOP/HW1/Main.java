@@ -1,7 +1,8 @@
 package org.geekbrains.JAVA.HW.OOP.HW1;
 
 
-import java.io.IOException;
+import org.geekbrains.JAVA.HW.OOP.HW1.People.People;
+import org.geekbrains.JAVA.HW.OOP.HW1.Trees.FamilyTree;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,21 +48,27 @@ public class Main {
 //        System.out.println(Aleksandr);
 //        System.out.println(Vavilovi);
 //        System.out.println(Semen.getChildren());
-        FileOperation fileOps = new FileOperationImpl();
-        try {
-            fileOps.saveToFile(Vavilovi, "Vavilovi.dat");
-            System.out.println("Vavilovi tree saved to file.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        FamilyTree loadFamilyTree = null;
-        try {
-            loadFamilyTree = fileOps.loadFromFile("Vavilovi.dat");
-            System.out.println("Vavilovi loaded from file.");
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (loadFamilyTree != null) System.out.println(loadFamilyTree);
+//        FileOperation fileOps = new FileOperationImpl();
+//        try {
+//            fileOps.saveToFile(Vavilovi, "Vavilovi.dat");
+//            System.out.println("Vavilovi tree saved to file.");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        FamilyTree loadFamilyTree = null;
+//        try {
+//            loadFamilyTree = fileOps.loadFromFile("Vavilovi.dat");
+//            System.out.println("Vavilovi loaded from file.");
+//        } catch (IOException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        if (loadFamilyTree != null) System.out.println(loadFamilyTree);
+
+        System.out.println(Vavilovi);
+        Vavilovi.sortByName();
+        System.out.println(Vavilovi);
+        Vavilovi.sortByAge();
+        System.out.println(Vavilovi);
     }
 }
 

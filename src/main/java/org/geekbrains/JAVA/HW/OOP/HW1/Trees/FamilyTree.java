@@ -1,10 +1,15 @@
-package org.geekbrains.JAVA.HW.OOP.HW1;
+package org.geekbrains.JAVA.HW.OOP.HW1.Trees;
+
+import org.geekbrains.JAVA.HW.OOP.HW1.People.Comparators.ComparePeopleAge;
+import org.geekbrains.JAVA.HW.OOP.HW1.People.Comparators.ComparePeoplebyName;
+import org.geekbrains.JAVA.HW.OOP.HW1.People.People;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Serializable {
+public class FamilyTree implements Serializable, Iterable<People> {
     private static final long serialVersionUID = 1L;
     private List<People> people;
 
@@ -54,4 +59,17 @@ public class FamilyTree implements Serializable {
         return people.toString();
     }
 
+    @Override
+    public Iterator<People> iterator() {
+        return people.listIterator();
+    }
+
+    public void sortByName() {
+        people.sort(new ComparePeoplebyName());
+
+    }
+
+    public void sortByAge() {
+        people.sort(new ComparePeopleAge());
+    }
 }

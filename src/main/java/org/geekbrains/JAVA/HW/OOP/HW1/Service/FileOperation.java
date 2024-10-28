@@ -1,4 +1,6 @@
-package org.geekbrains.JAVA.HW.OOP.HW1;
+package org.geekbrains.JAVA.HW.OOP.HW1.Service;
+
+import org.geekbrains.JAVA.HW.OOP.HW1.Trees.FamilyTree;
 
 import java.io.IOException;
 

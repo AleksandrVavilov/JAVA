@@ -1,4 +1,4 @@
-package org.geekbrains.JAVA.HW.OOP.HW1;
+package org.geekbrains.JAVA.HW.OOP.HW1.People;
 
 import java.io.Serializable;
 import java.util.ArrayList;
