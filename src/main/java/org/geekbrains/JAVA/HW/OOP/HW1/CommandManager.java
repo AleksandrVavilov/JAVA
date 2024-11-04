@@ -37,8 +37,10 @@ public class CommandManager {
                     break;
                 case "4":
                     try {
-                        fileOps.saveToFile(this.Tree, "Tree.dat");
-                        System.out.println("Tree saved to file.");
+                        System.out.println("Введите название файла в формате 'Tree.dat'");
+                        String fileName = scanner.nextLine();
+                        fileOps.saveToFile(this.Tree, fileName);
+                        System.out.println("Tree " + fileName + " saved to file.");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -46,12 +48,17 @@ public class CommandManager {
                 case "5":
                     Tree loadTree = null;
                     try {
-                        loadTree = fileOps.loadFromFile("Tree.dat");
-                        System.out.println("Tree loaded from file.");
+                        System.out.println("Введите название файла в формате 'Tree.dat'");
+                        String fileName = scanner.nextLine();
+                        loadTree = fileOps.loadFromFile(fileName);
+                        System.out.println("Tree " + fileName + " loaded from file.");
                     } catch (IOException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-                    if (loadTree != null) System.out.println(loadTree);
+                    if (loadTree != null) {
+                        this.Tree = loadTree;
+                        System.out.println(Tree);
+                    }
                     break;
                 case "7":
                     return;
