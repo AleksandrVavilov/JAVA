@@ -1,26 +1,30 @@
 package org.geekbrains.JAVA.HW.OOP.HW1;
 
 
-import org.geekbrains.JAVA.HW.OOP.HW1.People.People;
-import org.geekbrains.JAVA.HW.OOP.HW1.Trees.FamilyTree;
+import org.geekbrains.JAVA.HW.OOP.HW1.Entitys.Person;
+import org.geekbrains.JAVA.HW.OOP.HW1.Service.FileOperation;
+import org.geekbrains.JAVA.HW.OOP.HW1.Service.FileOperationImpl;
+import org.geekbrains.JAVA.HW.OOP.HW1.Trees.Tree;
+
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        FamilyTree Vavilovi = new FamilyTree();
-        People Null = new People("Null", "", 0);
-        People Aleksandr = new People("Aleksandr", "male", 32);
-        People Anastasiia = new People("Anastasiia", "female", 30);
-        People Vladimir = new People("Vladimir", "male", 64);
-        People Victory = new People("Victory", "female", 61);
-        People Semen = new People("Semen", "male", 37);
-        People Tatiana = new People("Tatiana", "female", 39);
-        People Andrew = new People("Andrew", "male", 6);
-        People Leonid = new People("Leonid", "male", 86);
-        People Zinaida = new People("Zinaida", "female", 84);
-        People Victor = new People("Victor", "male", 60);
-        People Yuriy = new People("Yuriy", "male", 35);
-        People Aleksandra = new People("Aleksandra", "female", 32);
-        People VladimirBoy = new People("Vladimir", "male", 3);
+        Tree<Person> Vavilovi = new Tree();
+//        People Null = new People("Null", "", 0);
+        Person Aleksandr = new Person("Aleksandr", "male", 32);
+        Person Anastasiia = new Person("Anastasiia", "female", 30);
+        Person Vladimir = new Person("Vladimir", "male", 64);
+        Person Victory = new Person("Victory", "female", 61);
+        Person Semen = new Person("Semen", "male", 37);
+        Person Tatiana = new Person("Tatiana", "female", 39);
+        Person Andrew = new Person("Andrew", "male", 6);
+        Person Leonid = new Person("Leonid", "male", 86);
+        Person Zinaida = new Person("Zinaida", "female", 84);
+        Person Victor = new Person("Victor", "male", 60);
+        Person Yuriy = new Person("Yuriy", "male", 35);
+        Person Aleksandra = new Person("Aleksandra", "female", 32);
+        Person VladimirBoy = new Person("Vladimir", "male", 3);
         Aleksandr.setFather(Vladimir);
         Semen.setFather(Vladimir);
         Andrew.setFather(Semen);
@@ -38,37 +42,37 @@ public class Main {
         Yuriy.setSpouse(Aleksandra);
         Leonid.setSpouse(Zinaida);
         Aleksandr.setSibling(Semen);
-        Vavilovi.addVPerson(Aleksandr, Anastasiia, Vladimir, Victory, Semen);
-        Vavilovi.addVPerson(Tatiana, Andrew, Leonid, Zinaida, Victor);
-        Vavilovi.addPerson(Yuriy);
-        Vavilovi.addPerson(Aleksandra);
-        Vavilovi.addPerson(VladimirBoy);
+        Vavilovi.addVEntity(Aleksandr, Anastasiia, Vladimir, Victory, Semen);
+        Vavilovi.addVEntity(Tatiana, Andrew, Leonid, Zinaida, Victor);
+        Vavilovi.addEntity(Yuriy);
+        Vavilovi.addEntity(Aleksandra);
+        Vavilovi.addEntity(VladimirBoy);
 
         Vavilovi.stabilization();
-//        System.out.println(Aleksandr);
-//        System.out.println(Vavilovi);
-//        System.out.println(Semen.getChildren());
-//        FileOperation fileOps = new FileOperationImpl();
-//        try {
-//            fileOps.saveToFile(Vavilovi, "Vavilovi.dat");
-//            System.out.println("Vavilovi tree saved to file.");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        FamilyTree loadFamilyTree = null;
-//        try {
-//            loadFamilyTree = fileOps.loadFromFile("Vavilovi.dat");
-//            System.out.println("Vavilovi loaded from file.");
-//        } catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        if (loadFamilyTree != null) System.out.println(loadFamilyTree);
+        System.out.println(Aleksandr);
+        System.out.println(Vavilovi);
+        System.out.println(Semen.getChildren());
+        FileOperation fileOps = new FileOperationImpl();
+        try {
+            fileOps.saveToFile(Vavilovi, "Vavilovi.dat");
+            System.out.println("Vavilovi tree saved to file.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Tree loadTree = null;
+        try {
+            loadTree = fileOps.loadFromFile("Vavilovi.dat");
+            System.out.println("Vavilovi loaded from file.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (loadTree != null) System.out.println(loadTree);
 
-        System.out.println(Vavilovi);
-        Vavilovi.sortByName();
-        System.out.println(Vavilovi);
-        Vavilovi.sortByAge();
-        System.out.println(Vavilovi);
+//        System.out.println(Vavilovi); //демонстрация сортировки
+//        Vavilovi.sortByName();
+//        System.out.println(Vavilovi);
+//        Vavilovi.sortByAge();
+//        System.out.println(Vavilovi);
     }
 }
 

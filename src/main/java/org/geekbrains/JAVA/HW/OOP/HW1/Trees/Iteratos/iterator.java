@@ -1,16 +1,16 @@
 package org.geekbrains.JAVA.HW.OOP.HW1.Trees.Iteratos;
 
 
-import org.geekbrains.JAVA.HW.OOP.HW1.People.People;
+import org.geekbrains.JAVA.HW.OOP.HW1.Entitys.Entity;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class PesonIterator implements Iterator<People> {
+public class iterator<T extends Entity> implements Iterator<T> {
     private int index;
-    private List<People> list;
+    private List<T> list;
 
-    public PesonIterator(List<People> list) {
+    public iterator(List<T> list) {
         this.list = list;
     }
 
@@ -20,7 +20,7 @@ public class PesonIterator implements Iterator<People> {
     }
 
     @Override
-    public People next() {
+    public T next() {
         return list.get(index++);
     }
 }

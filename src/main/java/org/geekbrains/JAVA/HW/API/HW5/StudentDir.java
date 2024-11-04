@@ -2,7 +2,7 @@ package org.geekbrains.JAVA.HW.API.HW5;
 /*
 Реализуйте программу для работы с простым справочником студентов.
 Программа должна иметь следующие функции:
-● addStudent(String name, Integer grade): Добавляет или
+● addEntity(String name, Integer grade): Добавляет или
 обновляет запись о студенте с именем name и оценкой grade. Если
 студент уже существует, обновляет его оценку.
 ● findStudent(String name): Находит оценки студента по его имени.

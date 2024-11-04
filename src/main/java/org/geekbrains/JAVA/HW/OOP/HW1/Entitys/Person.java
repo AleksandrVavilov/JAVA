@@ -1,21 +1,21 @@
-package org.geekbrains.JAVA.HW.OOP.HW1.People;
+package org.geekbrains.JAVA.HW.OOP.HW1.Entitys;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class People implements Serializable {
+public class Person implements Serializable, Entity {
     private static final long serialVersionUID = 1L; //нужно для работы сериализибера
     private String name;
     private String sex;
     private int age;
-    private People Father;
-    private People Mother;
-    private People Spouse;
-    private List<People> children;
-    private People Sibling;
+    private Person Father;
+    private Person Mother;
+    private Person Spouse;
+    private List<Entity> children;
+    private Person Sibling;
 
-    public People(String name, String sex, int age) {
+    public Person(String name, String sex, int age) {
         this.name = name;
         this.sex = sex;
         this.age = age;
@@ -34,23 +34,23 @@ public class People implements Serializable {
         return age;
     }
 
-    public People getFather() {
+    public Person getFather() {
         return Father;
     }
 
-    public People getMother() {
+    public Person getMother() {
         return Mother;
     }
 
-    public People getSpouse() {
+    public Person getSpouse() {
         return Spouse;
     }
 
-    public List<People> getChildren() {
+    public List<Entity> getChildren() {
         return children;
     }
 
-    public People getSibling() {
+    public Person getSibling() {
         return Sibling;
     }
 
@@ -66,21 +66,21 @@ public class People implements Serializable {
         this.age = age;
     }
 
-    public void setFather(People father) {
+    public void setFather(Person father) {
         this.Father = father;
     }
 
-    public void setMother(People mother) {
+    public void setMother(Person mother) {
         this.Mother = mother;
     }
 
-    public void setSpouse(People spouse) {
-        this.Spouse = spouse;
+    public void setSpouse(Entity spouse) {
+        this.Spouse = (Person) spouse;
 
     }
-
-    public void setSibling(People sibling) {
-        this.Sibling = sibling;
+    
+    public void setSibling(Entity sibling) {
+        this.Sibling = (Person) sibling;
     }
 
     @Override
@@ -95,15 +95,15 @@ public class People implements Serializable {
         if (Sibling != null) sb.append(", Sibling=" + Sibling.getName());
         if (!children.isEmpty()) {
             sb.append(", children=");
-            for (People child : children) {
+            for (Entity child : children) {
                 sb.append("[" + child.getName() + "]");
             }
         }
         return sb + "\n";
     }
 
-    public void addChild(People child) {
-        this.children.add(child);
+    public void addChild(Entity child) {
+        this.children.add((Person) child);
     }
 }
 
