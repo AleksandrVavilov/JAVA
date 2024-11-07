@@ -1,6 +1,6 @@
 package org.geekbrains.JAVA.OOP.sem3.comparators;
 
-import org.geekbrains.JAVA.OOP.sem3.group.StudyElement;
+import org.geekbrains.JAVA.OOP.sem5.model.group.StudyElement;
 
 import java.util.Comparator;
 

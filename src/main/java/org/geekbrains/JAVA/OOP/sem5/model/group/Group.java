@@ -1,4 +1,4 @@
-package org.geekbrains.JAVA.OOP.sem3.group;
+package org.geekbrains.JAVA.OOP.sem5.model.group;
 
 import org.geekbrains.JAVA.OOP.sem3.comparators.CompareTByAge;
 import org.geekbrains.JAVA.OOP.sem3.comparators.CompareTByName;

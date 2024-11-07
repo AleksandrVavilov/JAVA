@@ -1,15 +1,16 @@
-package org.geekbrains.JAVA.OOP.sem3.group.iterators;
+package org.geekbrains.JAVA.HW.OOP.HW5.Trees.Iteratos;
 
-import org.geekbrains.JAVA.OOP.sem3.group.StudyElement;
+
+import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Entity;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class GroupIterator<T extends StudyElement> implements Iterator<T> {
+public class iterator<T extends Entity> implements Iterator<T> {
     private int index;
     private List<T> list;
 
-    public GroupIterator(List<T> list) {
+    public iterator(List<T> list) {
         this.list = list;
     }
 

@@ -1,7 +1,7 @@
 package org.geekbrains.JAVA.OOP.sem3;
 
-import org.geekbrains.JAVA.OOP.sem3.service.Service;
-import org.geekbrains.JAVA.OOP.sem3.student.Student;
+import org.geekbrains.JAVA.OOP.sem5.model.service.Service;
+import org.geekbrains.JAVA.OOP.sem5.model.student.Student;
 
 public class Main {
     public static void main(String[] args) {

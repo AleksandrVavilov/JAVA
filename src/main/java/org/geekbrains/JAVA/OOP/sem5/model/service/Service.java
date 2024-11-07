@@ -1,8 +1,8 @@
-package org.geekbrains.JAVA.OOP.sem3.service;
+package org.geekbrains.JAVA.OOP.sem5.model.service;
 
-import org.geekbrains.JAVA.OOP.sem3.group.StudyElement;
-import org.geekbrains.JAVA.OOP.sem3.student.Student;
-import org.geekbrains.JAVA.OOP.sem3.group.Group;
+import org.geekbrains.JAVA.OOP.sem5.model.group.StudyElement;
+import org.geekbrains.JAVA.OOP.sem5.model.student.Student;
+import org.geekbrains.JAVA.OOP.sem5.model.group.Group;
 
 public class Service<T extends StudyElement> {
     private int GenId;
