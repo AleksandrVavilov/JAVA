@@ -1,29 +1,41 @@
 package org.geekbrains.JAVA.HW.OOP.HW5.presenter;
 
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Entity;
 import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Person;
 import org.geekbrains.JAVA.HW.OOP.HW5.Service.FileOperation;
 import org.geekbrains.JAVA.HW.OOP.HW5.Service.FileOperationImpl;
+import org.geekbrains.JAVA.HW.OOP.HW5.view.Menu;
 import org.geekbrains.JAVA.HW.OOP.HW5.view.Tree;
 import org.geekbrains.JAVA.HW.OOP.HW5.view.TreeView;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Scanner;
 
-public class TreePresenter<T extends Entity> {
+public class TreePresenter {
     private Tree<Person> familyTree;
     private TreeView view;
     private FileOperation<Person> fileOperation;
+    private Scanner scanner;
+    private boolean exit;
+    private Menu menu = new Menu(this);
 
     public TreePresenter(Tree<Person> familyTree, TreeView view, FileOperationImpl<Person> fileOperation) {
+        this.scanner = new Scanner(System.in);
         this.familyTree = familyTree;
         this.view = view;
         this.fileOperation = fileOperation;
-        this.view.setPresenter(this);
+//        this.view.setPresenter(this);
+        exit = true;
     }
 
-    public void addPerson(String name, String sex, int age) {
-        Person person = new Person(name, sex, age);
+    public void addPerson() {
+        System.out.println("Введите имя");
+        String name = scanner.nextLine();
+        System.out.println("Введите возраст");
+        String ageString = scanner.nextLine();
+        int age = Integer.parseInt(ageString);
+        System.out.println("Введите пол");
+        String sexString = scanner.nextLine();
+        Person person = new Person(name, sexString, age);
         familyTree.addEntity(person);
         view.displayMessage("Добавлен новый член семьи: " + name);
 
@@ -39,7 +51,15 @@ public class TreePresenter<T extends Entity> {
         showAllPersons();
     }
 
-    public void saveTree(String fileName) {
+    public void sortPersonByAge() {
+        familyTree.sortByAge();
+        view.displayMessage("Люди отсортированы по возрасту: ");
+        showAllPersons();
+    }
+
+    public void saveTree() {
+        System.out.println("Задайте имя файла");
+        String fileName = scanner.nextLine();
         try {
             fileOperation.saveToFile(familyTree, fileName);
             view.displayMessage("Дерево сохранено в файл: " + fileName);
@@ -48,7 +68,9 @@ public class TreePresenter<T extends Entity> {
         }
     }
 
-    public void loadTree(String fileName) {
+    public void loadTree() {
+        System.out.println("Задайте имя файла");
+        String fileName = scanner.nextLine();
         try {
             familyTree = fileOperation.loadFromFile(fileName);
             view.displayMessage("Дерево загружено из файла: " + fileName);
@@ -57,44 +79,54 @@ public class TreePresenter<T extends Entity> {
         }
     }
 
-    public void handleUserInput() {
-        while (true) {
-            view.displayMessage("Введите команду (add, list, sortByName, sortByAge, save, load, exit):");
-            String command = view.getUserInput();
-            switch (command) {
-                case "add":
-                    view.displayMessage("Введите имя:");
-                    String name = view.getUserInput();
-                    view.displayMessage("Введите возраст:");
-                    int age = Integer.parseInt(view.getUserInput());
-                    view.displayMessage("Введите пол:");
-                    String sex = view.getUserInput();
-                    addPerson(name, sex, age);
-                    break;
-                case "list":
-                    showAllPersons();
-                    break;
-                case "sortByName":
-                    familyTree.sortByName();
-                    break;
-                case "sortByAge":
-                    familyTree.sortByAge();
-                    break;
-                case "save":
-                    view.displayMessage("Задайте имя:");
-                    saveTree(view.getUserInput());
-                    break;
-                case "load":
-                    view.displayMessage("Задайте имя:");
-                    loadTree(view.getUserInput());
-                    break;
-                case "exit":
-                    return;
-                default:
-                    view.displayMessage("Неизвестная команда");
-            }
-
+    public void start() {
+        while (exit) {
+            printMenu();
+            execute();
         }
     }
 
+    private void printMenu() {
+        view.displayMessage(menu.menu());
+    }
+
+    private void execute() {
+        String line = scanner.nextLine();
+        if (checkTextForInt(line)) {
+            int numCommand = Integer.parseInt(line);
+            if (checkCommand(numCommand)) {
+                menu.execute(numCommand);
+            }
+        }
+    }
+
+    private boolean checkCommand(int numCommand) {
+        if (numCommand <= menu.getSize()) {
+            return true;
+        } else {
+            showError();
+            return false;
+        }
+    }
+
+    private boolean checkTextForInt(String text) {
+        if (text.matches("[0-9]+")) {
+            return true;
+        } else {
+            showError();
+            return false;
+        }
+    }
+
+    public static void showError() {
+        System.out.println("Неверный ввод команды! Попробуйте снова");
+    }
+
+    public void finish() {
+        exit = false;
+        System.out.println("Всего доброго!");
+    }
+
 }
+
+
