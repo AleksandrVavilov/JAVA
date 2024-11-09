@@ -1,11 +1,11 @@
 package org.geekbrains.JAVA.HW.OOP.HW5.Service;
 
-import org.geekbrains.JAVA.HW.OOP.HW1.Entitys.Entity;
-import org.geekbrains.JAVA.HW.OOP.HW5.view.Tree;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Entity;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Tree;
 
 import java.io.*;
 
-public class FileOperationImpl<T extends org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Entity> implements FileOperation<T> {
+public class FileOperationImpl<T extends Entity> implements FileOperation<T> {
     @Override
     public void saveToFile(Tree<T> tree, String fileName) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) { //object Преобразует объект в байты, файл запись в файл, блок трай сам закроет поток

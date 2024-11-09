@@ -1,4 +1,4 @@
-package org.geekbrains.JAVA.HW.OOP.HW5.Entitys;
+package org.geekbrains.JAVA.HW.OOP.HW5.model;
 
 import java.util.List;
 

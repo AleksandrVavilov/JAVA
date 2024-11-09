@@ -1,27 +1,27 @@
 package org.geekbrains.JAVA.HW.OOP.HW5.presenter;
 
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Person;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Person;
 import org.geekbrains.JAVA.HW.OOP.HW5.Service.FileOperation;
 import org.geekbrains.JAVA.HW.OOP.HW5.Service.FileOperationImpl;
-import org.geekbrains.JAVA.HW.OOP.HW5.view.Menu;
-import org.geekbrains.JAVA.HW.OOP.HW5.view.Tree;
-import org.geekbrains.JAVA.HW.OOP.HW5.view.TreeView;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Tree;
+import org.geekbrains.JAVA.HW.OOP.HW5.view.*;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class TreePresenter {
     private Tree<Person> familyTree;
-    private TreeView view;
+    private MessageView mview;
+    private PersonView pview;
+    private InputView iview;
     private FileOperation<Person> fileOperation;
-    private Scanner scanner;
     private boolean exit;
     private Menu menu = new Menu(this);
 
-    public TreePresenter(Tree<Person> familyTree, TreeView view, FileOperationImpl<Person> fileOperation) {
-        this.scanner = new Scanner(System.in);
+    public TreePresenter(Tree<Person> familyTree, MessageView mview, PersonView pview, InputView iview, FileOperationImpl<Person> fileOperation) {
         this.familyTree = familyTree;
-        this.view = view;
+        this.mview = mview;
+        this.pview = pview;
+        this.iview = iview;
         this.fileOperation = fileOperation;
 //        this.view.setPresenter(this);
         exit = true;
@@ -29,53 +29,53 @@ public class TreePresenter {
 
     public void addPerson() {
         System.out.println("Введите имя");
-        String name = scanner.nextLine();
+        String name = iview.getUserInput();
         System.out.println("Введите возраст");
-        String ageString = scanner.nextLine();
+        String ageString = iview.getUserInput();
         int age = Integer.parseInt(ageString);
         System.out.println("Введите пол");
-        String sexString = scanner.nextLine();
+        String sexString = iview.getUserInput();
         Person person = new Person(name, sexString, age);
         familyTree.addEntity(person);
-        view.displayMessage("Добавлен новый член семьи: " + name);
+        mview.displayMessage("Добавлен новый член семьи: " + name);
 
     }
 
     public void showAllPersons() {
-        view.displayPersons(familyTree.getMembers());
+        pview.displayPersons(familyTree.getMembers());
     }
 
     public void sortPersonByName() {
         familyTree.sortByName();
-        view.displayMessage("Люди отсортированы по имени: ");
+        mview.displayMessage("Люди отсортированы по имени: ");
         showAllPersons();
     }
 
     public void sortPersonByAge() {
         familyTree.sortByAge();
-        view.displayMessage("Люди отсортированы по возрасту: ");
+        mview.displayMessage("Люди отсортированы по возрасту: ");
         showAllPersons();
     }
 
     public void saveTree() {
         System.out.println("Задайте имя файла");
-        String fileName = scanner.nextLine();
+        String fileName = iview.getUserInput();
         try {
             fileOperation.saveToFile(familyTree, fileName);
-            view.displayMessage("Дерево сохранено в файл: " + fileName);
+            mview.displayMessage("Дерево сохранено в файл: " + fileName);
         } catch (IOException e) {
-            view.displayMessage("Ошибка записи файла: " + e.getMessage());
+            mview.displayMessage("Ошибка записи файла: " + e.getMessage());
         }
     }
 
     public void loadTree() {
         System.out.println("Задайте имя файла");
-        String fileName = scanner.nextLine();
+        String fileName = iview.getUserInput();
         try {
             familyTree = fileOperation.loadFromFile(fileName);
-            view.displayMessage("Дерево загружено из файла: " + fileName);
+            mview.displayMessage("Дерево загружено из файла: " + fileName);
         } catch (IOException | ClassNotFoundException e) {
-            view.displayMessage("Ошибка загрузки дерева: " + e.getMessage());
+            mview.displayMessage("Ошибка загрузки дерева: " + e.getMessage());
         }
     }
 
@@ -87,11 +87,11 @@ public class TreePresenter {
     }
 
     private void printMenu() {
-        view.displayMessage(menu.menu());
+        mview.displayMessage(menu.menu());
     }
 
     private void execute() {
-        String line = scanner.nextLine();
+        String line = iview.getUserInput();
         if (checkTextForInt(line)) {
             int numCommand = Integer.parseInt(line);
             if (checkCommand(numCommand)) {

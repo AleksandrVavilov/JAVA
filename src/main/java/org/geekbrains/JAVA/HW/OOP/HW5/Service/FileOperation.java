@@ -1,7 +1,7 @@
 package org.geekbrains.JAVA.HW.OOP.HW5.Service;
 
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Entity;
-import org.geekbrains.JAVA.HW.OOP.HW5.view.Tree;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Entity;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Tree;
 
 import java.io.IOException;
 

@@ -1,9 +1,7 @@
-package org.geekbrains.JAVA.HW.OOP.HW5.view;
+package org.geekbrains.JAVA.HW.OOP.HW5.model;
 
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Person;
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Comparators.CompareEByName;
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Entity;
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Comparators.CompareEAge;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Comparators.CompareEByName;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Comparators.CompareEAge;
 
 import java.io.Serializable;
 import java.util.ArrayList;

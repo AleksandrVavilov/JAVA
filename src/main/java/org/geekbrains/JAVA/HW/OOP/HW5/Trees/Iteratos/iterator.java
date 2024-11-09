@@ -1,7 +1,7 @@
 package org.geekbrains.JAVA.HW.OOP.HW5.Trees.Iteratos;
 
 
-import org.geekbrains.JAVA.HW.OOP.HW5.Entitys.Entity;
+import org.geekbrains.JAVA.HW.OOP.HW5.model.Entity;
 
 import java.util.Iterator;
 import java.util.List;
