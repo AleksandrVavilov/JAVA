@@ -18,7 +18,6 @@ public class Task4 {
         String replace = "Маша";
         String[] array = {"Шла", "Саша", "по", "шоссе", "и", "сосала", "сушку"};
         String[] result = new Answer1().findAndReplace(array, find, replace, errors);
-        System.out.println(Arrays.toString(array));
         System.out.println(Arrays.toString(result));
         if (!errors.isEmpty()) System.out.println("Список ошибок:" + errors.toString());
         else System.out.println("Ошибок не обнаружено!");
