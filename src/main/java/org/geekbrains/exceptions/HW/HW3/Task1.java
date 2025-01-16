@@ -50,6 +50,7 @@ public class Task1 {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
                 writer.write(format("{0} {1} {2} {3} {4} {5}", lastName, firstName, middleName, dateOfBirth, PhoneNumber.toString(), sex));
                 writer.newLine();
+                System.out.println("Файл " + fileName + " записан");
             } catch (IOException e) {
                 System.out.println("Ошибка записи");
             }
